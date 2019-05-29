@@ -1,0 +1,21 @@
+--- # this is  my first yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: installing appche in centos machine
+      yum: pkg=httpd state=present
+    - name: satarted apcahe
+      service: name=httpd state=started
+    - name: run a command directory
+      command: echo hi-Mukesh
+      register: output
+    - debug: var=output.stdout    
+    - name: tell me the Ram utilization
+      command: echo '{{ansible_memfree_mb}}'
+      register: memoutput
+    - debug: var=memoutput.stdout
+    - name: find all ip address of the node
+      command: echo '{{ansible_all_ipv4_addresses}}'
+      register: ipv4_output
+    - debug: var=ipv4_output.stdout
+

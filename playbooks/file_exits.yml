@@ -1,0 +1,11 @@
+--- #conditional yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: get statistics
+      stat: path=/tmp/thefile
+      register: st
+    - debug: var=st
+    - name: create /tmp/thefile
+      shell: touch /tmp/thefile
+      when: not st.stat.exists

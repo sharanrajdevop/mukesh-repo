@@ -1,0 +1,12 @@
+--- #this is ignore_error
+- hosts: demo
+  become: yes
+  tasks:
+    - name: dummy task
+      command: do
+      ignore_errors: yes
+      register: output
+    - debug: var=output
+    - name: force stop
+      fail: msg="force stop ansible"
+      when: "'Errno' in output.msg"

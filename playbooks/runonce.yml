@@ -1,0 +1,17 @@
+--- # this is  my first yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: installing appche in centos machine
+      yum: pkg=httpd state=present
+      notify: start apache
+    - name: run a command directory
+      command: echo hi-Mukesh
+      register: output
+    - debug: var=output.stdout
+      run_once: true    
+      delegate_to: node2
+  handlers:
+    - name: start apache
+      service: name=httpd state=started
+    

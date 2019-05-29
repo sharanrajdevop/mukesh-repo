@@ -1,0 +1,17 @@
+--- #conditional yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: print all item
+      command: echo {{item}}
+      with_items:
+         - 1
+         - 2
+         - 4
+         - 6
+         - 7
+      when: item > 4
+    - name: get statistics
+      stat: path=/tmp/thefile
+      register: st
+    - debug: var=st

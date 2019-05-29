@@ -1,0 +1,21 @@
+--- # this is  my first yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: installing appche in centos machine
+      yum: pkg=httpd state=present
+      notify: start apache
+    - name: run a command directory
+      command: echo hi-Mukesh
+      register: output
+    - debug: var=output.stdout
+    - name: add a list of users
+      user: name='{{item}}' state=present
+      with_items:
+        - user1
+        - user2
+        - user3
+  handlers:
+    - name: start apache
+      service: name=httpd state=started
+    

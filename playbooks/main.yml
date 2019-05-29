@@ -1,0 +1,7 @@
+--- # this is  my first yml
+- hosts: all
+  become: yes
+  roles:
+    - { role: dev, when: ansible_os_family== "RedHat" }
+    - { role: test, when: ansible_os_family== "Debian" }
+    

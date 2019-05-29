@@ -1,0 +1,13 @@
+--- # this is  my first yml
+- hosts: demo
+  become: yes
+  vars:
+    - pkack: httpd
+  tasks:
+    - name: installing appche in centos machine
+      yum: pkg="{{pkack}}" state=present
+    - name: satarted apcahe
+      service: name={{pkack}} state=started
+    - name: run a command directory
+      raw: ls /tmp
+

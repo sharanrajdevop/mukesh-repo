@@ -1,0 +1,7 @@
+    - name: installing appche in centos machine
+      yum: pkg= '{{pk}}' state=present
+      notify: start apache
+    - name: run a command directory
+      command: echo hi-Mukesh
+      register: output
+    - debug: var=output.stdout

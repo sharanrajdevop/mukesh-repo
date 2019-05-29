@@ -1,0 +1,10 @@
+--- # this is  my first yml
+- hosts: demo
+  become: yes
+  tasks:
+    - name: installing appche in centos machine
+      yum: pkg=httpd state=present
+    - name: wait for the server to start listiing port 80
+      wait_for:
+        port: 80
+        state: started

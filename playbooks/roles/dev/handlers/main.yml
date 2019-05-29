@@ -1,0 +1,2 @@
+    - name: start apache
+      service: name='{{pk}}' state=started
