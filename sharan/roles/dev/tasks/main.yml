@@ -1,0 +1,16 @@
+---    
+- name: git installation on ubunu
+  apt: name='{{pkg2}}' state='{{st1}}'
+  when: ansible_os_family =="Debian"
+- name: apache install
+  yum: name='{{pkg1}}' state='{{st1}}'
+  when: ansible_os_family =="RedHat"
+  notify: apache starting
+- name: installing apache on the ubuntu machine
+  apt: name='{{pkg3}}' state='{{st1}}'
+  when: ansible_os_family =="Debian"
+  notify: starting apache on ubuntu
+- name: run a command directory
+  command: echo hi-Mukesh
+  register: output
+- debug: var=output.stdout

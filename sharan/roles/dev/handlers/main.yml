@@ -1,0 +1,5 @@
+---
+- name: apache starting
+  service: name='{{pkg1}}' state='{{ser1}}'
+- name: starting apache on ubuntu
+  service: name='{{pkg3}}' state='{{ser1}}'

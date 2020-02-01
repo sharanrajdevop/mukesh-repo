@@ -1,0 +1,11 @@
+
+  pkg1: httpd
+  pkg2: git
+  pkg3: apache2
+  pkg4: maven
+  pkg5: jdk
+  st1: present
+  st2: absent
+  ser1: started
+  ser2: stopped
+  ser3: restart
